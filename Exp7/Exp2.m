@@ -1,0 +1,13 @@
+clear all ;
+N=1000;
+t_length=40;
+T=t_length/N; 
+t=(0:N-1)*T-t_length/2;
+w_length=2*pi/T;
+W=w_length/N;
+w=(0:N-1)*W-w_length/2;
+x=(t+2).*(stepfun(t,-2)-stepfun(t,-1))+stepfun(t,-1)-stepfun(t,1)+(2-t).*(stepfun(t,1)-stepfun(t,2)); 
+X=T*fft(x,N);
+X=fftshift(X); 
+plot(w,abs(X));axis([-10,10,-0.5,4]);
+title('FFT幅度谱'); grid on; 
