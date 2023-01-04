@@ -1,0 +1,16 @@
+clear all;
+sys=tf ([3,2],[1,5,6]);
+t=0:0.01:3;
+f=exp(-2*t).*heaviside(t) ;
+y=lsim(sys,f,t); 
+h=impulse(sys,t);
+g=step(sys,t);
+subplot (311) ; 
+plot(t,h) ; 
+title('单位冲击响应');grid on; 
+subplot (312) ; 
+plot (t, g);
+title('单位阶跃响应') ;grid on;
+subplot (313);
+plot(t,y); 
+title('零状态响应') ;grid on;

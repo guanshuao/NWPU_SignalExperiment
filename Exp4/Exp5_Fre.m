@@ -1,0 +1,25 @@
+clear all;
+d=0.01;
+t=-20:d:20; 
+w=-20:d:20;
+Hw=freqs([5],[1,5],w);
+xt=stepfun(t,0)-stepfun(t,1);
+Xw=d*xt*exp(-1*j*t'*w); 
+Yw=Hw.*Xw; 
+yt=(1/(2*pi))*d*Yw*exp(j*w'*t);
+ 
+subplot(5,1,1); plot(w,abs(Hw));
+axis([-20,20,-0.1,1.2]);
+title('转移函数幅频特性');grid on;
+subplot(5,1,2); plot(t,xt);
+axis([-1,3,-0.1,1.2]);
+title('输入信号时域图像'); grid on;
+subplot(5,1,3);plot(w,abs(Xw));
+axis([-20,20,-0.1,1.2]);
+title('输入信号的幅频特性'); grid on;
+subplot(5,1,4); plot(w,abs(Yw));
+axis([-20,20,-0.1,1.2]);
+title('输出信号的幅频特性'); grid on; 
+subplot(5,1,5); plot(t,yt);
+axis([-1,3,-0.1,1.2]);
+title('输出信号的时域图像'); grid on;
