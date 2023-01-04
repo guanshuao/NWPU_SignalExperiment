@@ -1,0 +1,15 @@
+clear all;
+x1=-4:0.05:4;
+y1=-4:0.05:4;
+[x,y]=meshgrid(x1,y1); 
+s=x+i*y; 
+Fs1=abs(2./(s+1)+5./(s+3));
+mesh(x,y,Fs1);
+surf(x,y,Fs1); 
+zlim([-1 50]);
+colormap(hsv);
+figure;
+Fs2=abs(1./((s+3).*(s+3)+1));
+mesh(x,y,Fs2);
+surf(x,y,Fs2);
+zlim([-1 50]);
